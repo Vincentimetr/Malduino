@@ -54,6 +54,13 @@ void createScript(String repertory,String nom){
 void launchScript(String chemin){
   windowsR(chemin);
 }
+void echoOff(){
+    Keyboard.press(KEY_RIGHT_ALT);
+    Keyboard.print("@");
+    Keyboard.releaseAll();
+    delay(defaultDelay);
+    typeLine("ECHO OFF");
+}
 void setup(){
   
   pinMode(6,INPUT_PULLUP);
@@ -70,10 +77,11 @@ void setup(){
     String repertoire="test";
     String script="test.bat";
     createScript(repertoire,script);
-    
+
+    echoOff();
     typeLine("ipconfig");
     typeLine("pause");
-    
+
     save();
     closeWindows();
     launchScript("C:/"+repertoire+"/"+script);
